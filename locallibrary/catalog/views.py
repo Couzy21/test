@@ -31,6 +31,7 @@ def index(request):
 
 class BookListView(generic.ListView):
     model = Book
+    paginate_by = 10
     #def book_list_view(request):
     
         #return(request, 'book_list.html')
