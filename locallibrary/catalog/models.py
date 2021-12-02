@@ -112,6 +112,12 @@ class Author(models.Model):
     date_of_birth = models.DateField(null=True, blank=True)
     date_of_death = models.DateField('died', null=True, blank=True)
 
+    def get_absolute_url(self):
+        return reverse('author-detail', args=[str(self.id)])
+
+    def __str__(self):
+        return f'{self.last_name}, {self.first_name}'
+
     class Meta:
         ordering = ['last_name', 'first_name']
 
@@ -121,7 +127,7 @@ class Author(models.Model):
 
     def __str__(self):
         """String for representing the Model object."""
-        return '{0}, {1}'.format(self.last_name, self.first_name)
+        return '{0}, {1}'.format(self.last_name, self.first_name)  
 
 
     def display_genre(self):
